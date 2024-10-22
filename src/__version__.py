@@ -3,4 +3,4 @@
 # SPDX-License-Identifier: MIT
 """Return the current version"""
 
-__version__ = VERSION = "0.0.0+auto.0"
+__version__ = VERSION = "8.49.0.elsabot"
