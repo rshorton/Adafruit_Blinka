@@ -147,6 +147,8 @@ elif detector.chip.RV1106:
     from adafruit_blinka.microcontroller.rockchip.rv1106.pin import Pin
 elif detector.chip.OS_AGNOSTIC:
     from adafruit_blinka.microcontroller.generic_agnostic_board.pin import Pin
+elif detector.chip.CELERON_J4105 or detector.chip.CELERON_J4125:
+    from adafruit_blinka.microcontroller.celeron.j41X5.pin import Pin
 
 from adafruit_blinka import Enum, ContextManaged
 

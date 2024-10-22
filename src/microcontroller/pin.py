@@ -164,5 +164,7 @@ elif chip_id is None:
         "WARNING: chip_id == None is not fully supported. Some features may not work."
     )
     from adafruit_blinka.microcontroller.generic_micropython import Pin
+elif chip_id == ap_chip.CELERON_J4105 or chip_id == ap_chip.CELERON_J4125:
+    from adafruit_blinka.microcontroller.celeron.j41X5.pin import *
 else:
     raise NotImplementedError("Microcontroller not supported: ", chip_id)
