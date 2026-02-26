@@ -133,6 +133,13 @@ class I2C(Lockable):
 
             self._i2c = _I2C(scl, sda, frequency=frequency)
             return
+        if detector.board.radxa_x4_u2if:
+            from adafruit_blinka.microcontroller.rp2040_u2if.i2c import (
+                I2C_Radxa_X4 as _I2C,
+            )
+
+            self._i2c = _I2C(scl, sda, frequency=frequency)
+            return
         if detector.chip.id == ap_chip.RP2040:
             from adafruit_blinka.microcontroller.rp2040.i2c import I2C as _I2C
 
@@ -151,6 +158,8 @@ class I2C(Lockable):
                 frequency = None  # Set to None if default to avoid triggering warning
         elif detector.board.ftdi_ft2232h:
             from adafruit_blinka.microcontroller.ftdi_mpsse.mpsse.i2c import I2C as _I2C
+        elif detector.board.ftdi_ft4232h:
+            from adafruit_blinka.microcontroller.ftdi_mpsse.mpsse.i2c import I2C as _I2C
         else:
             from adafruit_blinka.microcontroller.generic_micropython.i2c import (
                 I2C as _I2C,
@@ -168,9 +177,8 @@ class I2C(Lockable):
                 pass
         else:
             raise ValueError(
-                "No Hardware I2C on (scl,sda)={}\nValid I2C ports: {}".format(
-                    (scl, sda), i2cPorts
-                )
+                f"No Hardware I2C on (scl,sda)={(scl, sda)}\n"
+                f"Valid I2C ports: {i2cPorts}.\nMake sure I2C is enabled."
             )
         if threading is not None:
             self._lock = threading.RLock()
@@ -342,6 +350,14 @@ class SPI(Lockable):
             self._spi = _SPI(clock)  # this is really all that's needed
             self._pins = (clock, clock, clock)  # will determine MOSI/MISO from clock
             return
+        if detector.board.radxa_x4_u2if:
+            from adafruit_blinka.microcontroller.rp2040_u2if.spi import (
+                SPI_Radxa_X4 as _SPI,
+            )
+
+            self._spi = _SPI(clock)  # this is really all that's needed
+            self._pins = (clock, clock, clock)  # will determine MOSI/MISO from clock
+            return
         if detector.chip.id == ap_chip.RP2040:
             from adafruit_blinka.microcontroller.rp2040.spi import SPI as _SPI
 
@@ -357,6 +373,8 @@ class SPI(Lockable):
         if detector.board.any_embedded_linux:
             from adafruit_blinka.microcontroller.generic_linux.spi import SPI as _SPI
         elif detector.board.ftdi_ft2232h:
+            from adafruit_blinka.microcontroller.ftdi_mpsse.mpsse.spi import SPI as _SPI
+        elif detector.board.ftdi_ft4232h:
             from adafruit_blinka.microcontroller.ftdi_mpsse.mpsse.spi import SPI as _SPI
         elif detector.board.OS_AGNOSTIC_BOARD:
             from adafruit_blinka.microcontroller.generic_agnostic_board.spi import (
@@ -379,9 +397,8 @@ class SPI(Lockable):
                 break
         else:
             raise ValueError(
-                "No Hardware SPI on (SCLK, MOSI, MISO)={}\nValid SPI ports:{}".format(
-                    (clock, MOSI, MISO), spiPorts
-                )
+                f"No Hardware SPI on (SCLK, MOSI, MISO)={(clock, MOSI, MISO)}\n"
+                f"Valid SPI ports: {spiPorts}.\nMake sure SPI is enabled."
             )
 
     def configure(self, baudrate=100000, polarity=0, phase=0, bits=8):
@@ -393,6 +410,10 @@ class SPI(Lockable):
                 SPI as _SPI,
             )
         elif detector.board.ftdi_ft2232h:
+            from adafruit_blinka.microcontroller.ftdi_mpsse.mpsse.spi import (
+                SPI as _SPI,
+            )
+        elif detector.board.ftdi_ft4232h:
             from adafruit_blinka.microcontroller.ftdi_mpsse.mpsse.spi import (
                 SPI as _SPI,
             )
@@ -434,6 +455,10 @@ class SPI(Lockable):
             )
         elif detector.board.qtpy_u2if:
             from adafruit_blinka.microcontroller.rp2040_u2if.spi import SPI_QTPY as _SPI
+        elif detector.board.radxa_x4_u2if:
+            from adafruit_blinka.microcontroller.rp2040_u2if.spi import (
+                SPI_Radxa_X4 as _SPI,
+            )
         elif detector.chip.id == ap_chip.RP2040:
             from adafruit_blinka.microcontroller.rp2040.spi import SPI as _SPI
         elif detector.board.any_siemens_iot2000:

@@ -65,6 +65,8 @@ elif chip_id == ap_chip.H618:
     from adafruit_blinka.microcontroller.allwinner.h618 import *
 elif chip_id == ap_chip.H616:
     from adafruit_blinka.microcontroller.allwinner.h616 import *
+elif chip_id == ap_chip.T527:
+    from adafruit_blinka.microcontroller.allwinner.t527 import *
 elif chip_id == ap_chip.SAMA5:
     from adafruit_blinka.microcontroller.sama5 import *
 elif chip_id == ap_chip.T210:
@@ -75,6 +77,8 @@ elif chip_id == ap_chip.T194:
     from adafruit_blinka.microcontroller.tegra.t194 import *
 elif chip_id == ap_chip.T234:
     from adafruit_blinka.microcontroller.tegra.t234 import *
+elif chip_id == ap_chip.T264:
+    from adafruit_blinka.microcontroller.tegra.t264 import *
 elif chip_id == ap_chip.S905:
     from adafruit_blinka.microcontroller.amlogic.s905 import *
 elif chip_id == ap_chip.S905X:
@@ -107,6 +111,8 @@ elif chip_id == ap_chip.RK3399_T:
     from adafruit_blinka.microcontroller.rockchip.rk3399 import *
 elif chip_id == ap_chip.RK3588:
     from adafruit_blinka.microcontroller.rockchip.rk3588 import *
+elif chip_id == ap_chip.RK3588S:
+    from adafruit_blinka.microcontroller.rockchip.rk3588s import *
 elif chip_id == ap_chip.RK3328:
     from adafruit_blinka.microcontroller.rockchip.rk3328 import *
 elif chip_id == ap_chip.RK3566:
@@ -137,6 +143,8 @@ elif chip_id == ap_chip.FT232H:
     from adafruit_blinka.microcontroller.ftdi_mpsse.ft232h import *
 elif chip_id == ap_chip.FT2232H:
     from adafruit_blinka.microcontroller.ftdi_mpsse.ft2232h import *
+elif chip_id == ap_chip.FT4232H:
+    from adafruit_blinka.microcontroller.ftdi_mpsse.ft4232h import *
 elif chip_id == ap_chip.PENTIUM_N3710:
     from adafruit_blinka.microcontroller.pentium.n3710 import *
 elif chip_id == ap_chip.ATOM_J4105:
@@ -159,6 +167,14 @@ elif chip_id == ap_chip.TH1520:
     from adafruit_blinka.microcontroller.thead.th1520 import *
 elif chip_id == ap_chip.K1:
     from adafruit_blinka.microcontroller.spacemit.k1 import *
+elif chip_id == ap_chip.RZV2N:
+    from adafruit_blinka.microcontroller.renesas.rzv2n import *
+elif chip_id == ap_chip.RZV2H:
+    from adafruit_blinka.microcontroller.renesas.rzv2h import *
+elif chip_id == ap_chip.SUNRISE_X3:
+    from adafruit_blinka.microcontroller.horizon.sunrise_x3 import *
+elif chip_id == ap_chip.QCM6490:
+    from adafruit_blinka.microcontroller.quectel.qcm6490 import *
 elif chip_id == ap_chip.GENERIC_X86:
     print("WARNING: GENERIC_X86 is not fully supported. Some features may not work.")
 elif chip_id == ap_chip.OS_AGNOSTIC:

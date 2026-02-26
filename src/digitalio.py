@@ -15,14 +15,10 @@ from adafruit_blinka.agnostic import board_id, detector
 
 # By Chip Class
 if detector.chip.BCM2XXX:
-    if board_id in (
-        "RASPBERRY_PI_4B",
-        "RASPBERRY_PI_400",
-        "RASPBERRY_PI_CM4",
-        "RASPBERRY_PI_CM4S",
-        "RASPBERRY_PI_5",
-    ):
-        from adafruit_blinka.microcontroller.bcm2711.pin import *
+    if detector.board.any_raspberry_pi_5_board:
+        from adafruit_blinka.microcontroller.bcm2712.pin import Pin
+    elif detector.board.any_raspberry_pi_4_board:
+        from adafruit_blinka.microcontroller.bcm2711.pin import Pin
     else:
         from adafruit_blinka.microcontroller.bcm283x.pin import Pin
 elif detector.chip.AM33XX:
@@ -51,6 +47,8 @@ elif detector.chip.T194:
     from adafruit_blinka.microcontroller.tegra.t194.pin import Pin
 elif detector.chip.T234:
     from adafruit_blinka.microcontroller.tegra.t234.pin import Pin
+elif detector.chip.T264:
+    from adafruit_blinka.microcontroller.tegra.t264.pin import Pin
 elif detector.chip.S905:
     from adafruit_blinka.microcontroller.amlogic.s905.pin import Pin
 elif detector.chip.S905X:
@@ -91,6 +89,8 @@ elif detector.chip.RK3399_T:
     from adafruit_blinka.microcontroller.rockchip.rk3399.pin import Pin
 elif detector.chip.RK3588:
     from adafruit_blinka.microcontroller.rockchip.rk3588.pin import Pin
+elif detector.chip.RK3588S:
+    from adafruit_blinka.microcontroller.rockchip.rk3588s.pin import Pin
 elif detector.chip.RK3328:
     from adafruit_blinka.microcontroller.rockchip.rk3328.pin import Pin
 elif detector.chip.RK3566:
@@ -115,17 +115,27 @@ elif detector.chip.H618:
     from adafruit_blinka.microcontroller.allwinner.h618.pin import Pin
 elif detector.chip.H616:
     from adafruit_blinka.microcontroller.allwinner.h616.pin import Pin
+elif detector.chip.T527:
+    from adafruit_blinka.microcontroller.allwinner.t527.pin import Pin
 elif detector.chip.D1_RISCV:
     from adafruit_blinka.microcontroller.allwinner.D1.pin import Pin
 elif detector.chip.TH1520:
     from adafruit_blinka.microcontroller.thead.th1520.pin import Pin
 elif detector.chip.K1:
     from adafruit_blinka.microcontroller.spacemit.k1.pin import Pin
+elif detector.chip.RZV2N:
+    from adafruit_blinka.microcontroller.renesas.rzv2n.pin import Pin
+elif detector.chip.RZV2H:
+    from adafruit_blinka.microcontroller.renesas.rzv2h.pin import Pin
+elif detector.chip.SUNRISE_X3:
+    from adafruit_blinka.microcontroller.horizon.sunrise_x3.pin import Pin
 # Special Case Boards
 elif detector.board.ftdi_ft232h:
     from adafruit_blinka.microcontroller.ftdi_mpsse.ft232h.pin import Pin
 elif detector.board.ftdi_ft2232h:
     from adafruit_blinka.microcontroller.ftdi_mpsse.ft2232h.pin import Pin
+elif detector.board.ftdi_ft4232h:
+    from adafruit_blinka.microcontroller.ftdi_mpsse.ft4232h.pin import Pin
 elif detector.board.binho_nova:
     from adafruit_blinka.microcontroller.nova.pin import Pin
 elif detector.board.greatfet_one:
@@ -145,6 +155,8 @@ elif detector.chip.RV1103:
     from adafruit_blinka.microcontroller.rockchip.rv1103.pin import Pin
 elif detector.chip.RV1106:
     from adafruit_blinka.microcontroller.rockchip.rv1106.pin import Pin
+elif detector.chip.QCM6490:
+    from adafruit_blinka.microcontroller.quectel.qcm6490.pin import Pin
 elif detector.chip.OS_AGNOSTIC:
     from adafruit_blinka.microcontroller.generic_agnostic_board.pin import Pin
 

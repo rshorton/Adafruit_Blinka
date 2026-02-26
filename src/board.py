@@ -41,13 +41,10 @@ elif board_id == ap_board.PYBOARD:
 elif board_id == ap_board.RASPBERRY_PI_PICO:
     from adafruit_blinka.board.raspberrypi.pico import *
 
-elif (
-    detector.board.RASPBERRY_PI_4B
-    or detector.board.RASPBERRY_PI_CM4
-    or detector.board.RASPBERRY_PI_CM4S
-    or detector.board.RASPBERRY_PI_400
-    or detector.board.RASPBERRY_PI_5
-):
+elif detector.board.any_raspberry_pi_5_board:
+    from adafruit_blinka.board.raspberrypi.raspi_5 import *
+
+elif detector.board.any_raspberry_pi_4_board:
     from adafruit_blinka.board.raspberrypi.raspi_4b import *
 
 elif detector.board.any_raspberry_pi_40_pin:
@@ -134,17 +131,29 @@ elif board_id == ap_board.ORANGE_PI_ZERO_2:
 elif board_id == ap_board.ORANGE_PI_3:
     from adafruit_blinka.board.orangepi.orangepi3 import *
 
+elif board_id == ap_board.ORANGE_PI_3_LTS:
+    from adafruit_blinka.board.orangepi.orangepi3lts import *
+
+elif board_id == ap_board.ORANGE_PI_3B:
+    from adafruit_blinka.board.orangepi.orangepi3b import *
+
 elif board_id == ap_board.ORANGE_PI_4:
     from adafruit_blinka.board.orangepi.orangepi4 import *
 
 elif board_id == ap_board.ORANGE_PI_4_LTS:
     from adafruit_blinka.board.orangepi.orangepi4 import *
 
-elif board_id == ap_board.ORANGE_PI_5:
+elif board_id in (ap_board.ORANGE_PI_5, ap_board.ORANGE_PI_5_MAX):
     from adafruit_blinka.board.orangepi.orangepi5 import *
+
+elif board_id == ap_board.ORANGE_PI_5_PRO:
+    from adafruit_blinka.board.orangepi.orangepi5pro import *
 
 elif board_id == ap_board.ORANGE_PI_5_PLUS:
     from adafruit_blinka.board.orangepi.orangepi5plus import *
+
+elif board_id == ap_board.ORANGE_PI_5_ULTRA:
+    from adafruit_blinka.board.orangepi.orangepi5ultra import *
 
 elif board_id == ap_board.BANANA_PI_M2_ZERO:
     from adafruit_blinka.board.bananapi.bpim2zero import *
@@ -163,6 +172,18 @@ elif board_id == ap_board.BANANA_PI_M5:
 
 elif board_id == ap_board.BANANA_PI_F3:
     from adafruit_blinka.board.bananapi.bpif3 import *
+
+elif board_id == ap_board.BANANA_PI_AI2N:
+    from adafruit_blinka.board.bananapi.bpiai2n import *
+
+elif board_id == ap_board.BANANA_PI_AI2H:
+    from adafruit_blinka.board.bananapi.bpiai2h import *
+
+elif board_id == ap_board.BANANA_PI_F5:
+    from adafruit_blinka.board.bananapi.bpif5 import *
+
+elif board_id == ap_board.BANANA_PI_P2_PRO:
+    from adafruit_blinka.board.bananapi.bpip2pro import *
 
 elif board_id == ap_board.LEMAKER_BANANA_PRO:
     from adafruit_blinka.board.lemaker.bananapro import *
@@ -193,6 +214,9 @@ elif board_id == ap_board.JETSON_AGX_ORIN:
 
 elif board_id in (ap_board.JETSON_ORIN_NX, ap_board.JETSON_ORIN_NANO):
     from adafruit_blinka.board.nvidia.jetson_orin_nx import *
+
+elif board_id == ap_board.JETSON_THOR:
+    from adafruit_blinka.board.nvidia.jetson_thor import *
 
 elif board_id == ap_board.CLARA_AGX_XAVIER:
     from adafruit_blinka.board.nvidia.clara_agx_xavier import *
@@ -232,6 +256,9 @@ elif board_id == ap_board.FTDI_FT232H:
 
 elif board_id == ap_board.FTDI_FT2232H:
     from adafruit_blinka.board.ftdi_ft2232h import *
+
+elif board_id == ap_board.FTDI_FT4232H:
+    from adafruit_blinka.board.ftdi_ft4232h import *
 
 elif board_id == ap_board.BINHO_NOVA:
     from adafruit_blinka.board.binho_nova import *
@@ -275,6 +302,9 @@ elif board_id == ap_board.RADXA_CM3:
 elif board_id == ap_board.ROCK_PI_3A:
     from adafruit_blinka.board.radxa.rockpi3a import *
 
+elif board_id == ap_board.ROCK_3B:
+    from adafruit_blinka.board.radxa.rock3b import *
+
 elif board_id == ap_board.ROCK_PI_3C:
     from adafruit_blinka.board.radxa.rockpi3c import *
 
@@ -304,6 +334,12 @@ elif board_id == ap_board.ROCK_PI_5C:
 
 elif board_id == ap_board.ROCK_PI_E:
     from adafruit_blinka.board.radxa.rockpie import *
+
+elif board_id == ap_board.VAAMAN:
+    from adafruit_blinka.board.vicharak.vaaman import *
+
+elif board_id == ap_board.AXON:
+    from adafruit_blinka.board.vicharak.axon import *
 
 elif board_id == ap_board.UDOO_X86:
     from adafruit_blinka.board.udoo_x86ultra import *
@@ -416,6 +452,9 @@ elif board_id == ap_board.WALNUT_PI_1B:
 elif board_id == ap_board.RP2040_ONE_U2IF:
     from adafruit_blinka.board.rp2040_one_u2if import *
 
+elif board_id == ap_board.RADXA_X4_U2IF:
+    from adafruit_blinka.board.radxa_x4_u2if import *
+
 elif board_id == ap_board.OS_AGNOSTIC_BOARD:
     from adafruit_blinka.board.generic_agnostic_board import *
 
@@ -431,11 +470,20 @@ elif board_id == ap_board.LUCKFOX_PICO_PLUS:
 elif board_id == ap_board.LUCKFOX_PICO_MAX:
     from adafruit_blinka.board.luckfox.luckfoxpico_max import *
 
+elif board_id == ap_board.LUCKFOX_PICO_ULTRA:
+    from adafruit_blinka.board.luckfox.luckfoxpico_ultra import *
+
 elif board_id == ap_board.VIVID_UNIT:
     from adafruit_blinka.board.vivid_unit import *
 
 elif board_id == ap_board.INDIEDROID_NOVA:
     from adafruit_blinka.board.ameridroid.indiedroid_nova import *
+
+elif board_id == ap_board.RDK_X3:
+    from adafruit_blinka.board.horizon.rdkx3 import *
+
+elif board_id == ap_board.PARTICLE_TACHYON:
+    from adafruit_blinka.board.particle.tachyon import *
 
 elif "sphinx" in sys.modules:
     pass
